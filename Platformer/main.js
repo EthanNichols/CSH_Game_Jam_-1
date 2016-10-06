@@ -37,10 +37,11 @@ window.onload = function(){
 			this.vx *= .5
 			this.y = canvas.height - 10;
 			this.jumping = false;
+			this.maxv = 20;
 		}
 		
 		if (keys[38] && !this.jumping){
-			this.vy -= 13;
+			this.vy -= 8;
 			this.jumping = true;
 		}
 		
@@ -63,17 +64,27 @@ window.onload = function(){
 			//this.jumping = false
 		}
 		
-		if (this.x > b.x -10 && this.x < b.x +b.sides && this.y > b.y){
-			this.vx = -.7;
-			this.vy = -.7;
-			/*
-			if (this.x + 10 > b.x - 10){
-				this.x += 1
+		if (this.x > b.x - 10 && this.x < b.x + b.sides && this.y > b.y - 10){
+			if ( this.vx > 0 && this.y > b.y){
+				this.x = b.x - 10;
+				this.vx = 0;
 			}
-			if (this.y + 10 > b.y - 10){
-				this.y = b.y - 10;
+			if (this.vx < 0 && this.y > b.y){
+				this.x = b.x + b.sides;
+				this.vx = 0
 			}
-			*/
+			if (this.vy >= 0 && this.y <= b.y){
+				this.y = b.y -10;
+				this.vy = 0;
+				this.jumping = false;
+				this.vx *= .5;
+			}
+			}
+		if (this.vx > this.maxv){
+			this.vx = this.maxv;
+		}
+		if (this.vx < -this.maxv){
+			this.vx = -this.maxv;
 		}
 			
 		
