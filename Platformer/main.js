@@ -5,23 +5,53 @@ window.onload = function(){
 	ctx.fillStyle = "white";
 	ctx.fillRect(0,0,canvas.width,canvas.height);
 	
+	var boxes = {};
+	var boxIndex = 0;
+	var boxnum = 6;
+	
 	function box(){
-		this.x = 300;
-		this.y = 200;
-		this.sides = 100;
+		this.x = Math.random()*1000;
+		this.y = Math.random()*300;		
+		this.sidex = Math.random() * 200;
+		this.sidey = Math.random() * 200;
 		this.color = "blue";
+		boxIndex ++;
+		boxes[boxIndex] = this;
+		this.id = boxIndex;
+		
 	}
 	
 	box.prototype.draw = function(){
 		ctx.fillStyle = this.color;
-		ctx.fillRect(this.x,this.y,this.sides,this.sides);
+		ctx.fillRect(this.x,this.y,this.sidex,this.sidey);
+		
+		if (p.x > this.x - 10 && p.x < this.x + this.sidex && p.y > this.y - 10 && p.y < this.y + this.sidey){
+			if ( p.vx > 0 && p.y > this.y && p.y <= this.y + this.sidey - 10){
+				p.x = this.x - 10;
+				p.vx = 0;
+			}
+			if (p.vx < 0 && p.y > this.y && p.y <= this.y + this.sidey - 10){
+				p.x = this.x + this.sidex;
+				p.vx = 0
+			}
+			if (p.vy >= 0 && p.y <= this.y){
+				p.y = this.y -10;
+				p.vy *= -.3;
+				p.jumping = false;
+				p.vx *= .5;
+			}
+			if (p.vy < 0 && p.y >= this.y + this.sidey - 10){
+				p.vy *= -.2;
+			}
+			
+			}
 	}
 	
 	function player(){
 		this.x = canvas.width / 2;
 		this.y = 600
 		this.vx = 0;
-		this.vy = -10;
+		this.vy = 0;
 		this.gravity = .5;
 		this.color = "black";
 		this.jumping = false;
@@ -41,7 +71,7 @@ window.onload = function(){
 		}
 		
 		if (keys[38] && !this.jumping){
-			this.vy -= 8;
+			this.vy -= 10;
 			this.jumping = true;
 		}
 		
@@ -64,22 +94,6 @@ window.onload = function(){
 			//this.jumping = false
 		}
 		
-		if (this.x > b.x - 10 && this.x < b.x + b.sides && this.y > b.y - 10){
-			if ( this.vx > 0 && this.y > b.y){
-				this.x = b.x - 10;
-				this.vx = 0;
-			}
-			if (this.vx < 0 && this.y > b.y){
-				this.x = b.x + b.sides;
-				this.vx = 0
-			}
-			if (this.vy >= 0 && this.y <= b.y){
-				this.y = b.y -10;
-				this.vy = 0;
-				this.jumping = false;
-				this.vx *= .5;
-			}
-			}
 		if (this.vx > this.maxv){
 			this.vx = this.maxv;
 		}
@@ -92,7 +106,11 @@ window.onload = function(){
 		ctx.fillRect(this.x,this.y,10,10);
 	}
 	var p = new player()
-	var b = new box()
+	
+	for (var i = 0; i < boxnum; i++){
+		new box()
+	}
+	
 	
 	document.body.addEventListener("keydown", function(e){
 		keys[e.keyCode] = true;
@@ -106,7 +124,11 @@ window.onload = function(){
 	setInterval(function(){
 		ctx.fillStyle = "white";
 		ctx.fillRect(0,0,canvas.width,canvas.height);
-		b.draw();
+		
+		for (var i in boxes){
+			boxes[i].draw()
+		}
+		
 		p.draw();
 	},30)
 }
