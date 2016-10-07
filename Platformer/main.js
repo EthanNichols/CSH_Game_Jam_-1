@@ -106,22 +106,24 @@ window.onload = function(){
 			this.vx = -this.maxv;
 		}
 		
-		var isGrounded = false;
+		//var isGrounded = false;
+		this.isGrounded = false;
+		
 		var bottomY = canvas.height - 10;
 		for (var b in boxes) {
 			if (this.x > boxes[b].x - 10 && this.x + 10 < boxes[b].x + boxes[b].sidex + 10) { // Checks x axis
 				if (Math.abs(this.y + 10 - boxes[b].y) < 1) { // Checks y axis
 					console.log((this.y + 10) + " - " + boxes[b].y);
-					isGrounded = true;
+					this.isGrounded = true;
 					bottomY = boxes[b].y - 10;
 					break;
 				} 
 			}
 		}
 		if (Math.abs(this.y + 10 - canvas.height) <= 1) {
-			isGrounded = true;
+			this.isGrounded = true;
 		}
-		if (Math.abs(this.vy) < .7 && this.vy > 0 && !keys[38] && isGrounded){
+		if (Math.abs(this.vy) < .7 && this.vy > 0 && !keys[38] && this.isGrounded){
 			this.vy = 0
 			this.vx *= 0.75;
 			this.y = bottomY;
