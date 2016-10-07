@@ -66,6 +66,7 @@ window.onload = function(){
 		this.x += this.vx;
 		this.y += this.vy;
 		this.vy+= this.gravity;
+		
 		if(this.y > canvas.height - 10){
 			this.vy *= -.3;
 			this.vx *= .5
@@ -104,9 +105,26 @@ window.onload = function(){
 		if (this.vx < -this.maxv){
 			this.vx = -this.maxv;
 		}
-			
-		if (this.vy < .2 && this.vy > 0 && !keys[38]){
+		
+		var isGrounded = false;
+		var bottomY = canvas.height - 10;
+		for (var b in boxes) {
+			if (this.x > boxes[b].x - 10 && this.x + 10 < boxes[b].x + boxes[b].sidex + 10) { // Checks x axis
+				if (Math.abs(this.y + 10 - boxes[b].y) < 1) { // Checks y axis
+					console.log((this.y + 10) + " - " + boxes[b].y);
+					isGrounded = true;
+					bottomY = boxes[b].y - 10;
+					break;
+				} 
+			}
+		}
+		if (Math.abs(this.y + 10 - canvas.height) <= 1) {
+			isGrounded = true;
+		}
+		if (Math.abs(this.vy) < .7 && this.vy > 0 && !keys[38] && isGrounded){
 			this.vy = 0
+			this.vx *= 0.75;
+			this.y = bottomY;
 		}
 		
 		//ctx.fillStyle = this.color;
