@@ -2,6 +2,7 @@ window.onload = function(){
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d")
 	var keys = [];
+	var cat = document.getElementById("cat")
 	ctx.fillStyle = "white";
 	ctx.fillRect(0,0,canvas.width,canvas.height);
 	
@@ -39,8 +40,11 @@ window.onload = function(){
 				p.vy *= -.3;
 				p.jumping = false;
 				p.vx *= .5;
+				if (p.vy < .1 && p.vy > 0 && !keys[38]){
+					p.vy = 0;
+				}
 			}
-			if (p.vy < 0 && p.y >= this.y + this.sidey - 10){
+			if (p.vy < 0 && p.y >= this.y + this.sidey - 5){
 				p.vy *= -.2;
 			}
 			
@@ -55,7 +59,7 @@ window.onload = function(){
 		this.gravity = .5;
 		this.color = "black";
 		this.jumping = false;
-		
+		this.maxv = 10;
 	}
 	
 	player.prototype.draw = function(){
@@ -67,7 +71,7 @@ window.onload = function(){
 			this.vx *= .5
 			this.y = canvas.height - 10;
 			this.jumping = false;
-			this.maxv = 20;
+			
 		}
 		
 		if (keys[38] && !this.jumping){
@@ -101,9 +105,13 @@ window.onload = function(){
 			this.vx = -this.maxv;
 		}
 			
+		if (this.vy < .2 && this.vy > 0 && !keys[38]){
+			this.vy = 0
+		}
 		
-		ctx.fillStyle = this.color;
-		ctx.fillRect(this.x,this.y,10,10);
+		//ctx.fillStyle = this.color;
+		//ctx.fillRect(this.x,this.y,10,10);
+		ctx.drawImage(cat,this.x,this.y,10,10)
 	}
 	var p = new player()
 	
