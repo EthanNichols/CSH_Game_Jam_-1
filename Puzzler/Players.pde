@@ -84,9 +84,37 @@ void playerMove(){
   }
 }
 
+void playerCollision(){
+  if(p1.Xgrid == p2.Xgrid && p1.Ygrid == p2.Ygrid){
+    if(keyCode == DOWN){
+       p1.Ygrid -= 1;
+    }
+    if(keyCode == UP){
+      p1.Ygrid += 1;
+    }
+    if(keyCode == RIGHT){
+      p1.Xgrid -=1;
+    }
+    if(keyCode == LEFT){
+      p1.Xgrid += 1;
+    }
+    if(key == 's'){
+       p2.Ygrid -= 1;
+    }
+    if(key == 'w'){
+      p2.Ygrid += 1;
+    }
+    if(key == 'a'){
+      p2.Xgrid +=1;
+    }
+    if(key == 'd'){
+      p2.Xgrid -= 1;
+    }
+  }
+}
+
 //Draw both players in their respective locations
 void playerDraw() {
-  //scale(5, 5);
   
   p1.display();
   p2.display();

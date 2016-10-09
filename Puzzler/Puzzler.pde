@@ -1,29 +1,29 @@
 
 void setup() {
-  
-  fullScreen();
+  size(640,640);
   background(100);
  
   createPlayers();
   createBoxes();
   createTeleporters();
+  //levelManager();
+
 }
 
 void draw() {
   background(100);
-  
+  //mapDraw();
   goal1.run();
   goal2.run();
   teleportersDraw();
-  
   playerDraw();
   boxesDraw();
-    if(p1.onGoal && p2.onGoal){
-      println("YOU WON");
-    }
+
+
 }
 
 void keyPressed() {
   playerMove();
   boxCollision();
+  playerCollision();
 }
