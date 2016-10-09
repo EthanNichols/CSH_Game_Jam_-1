@@ -7,7 +7,7 @@ void levelManager() {
 
 void levelLoader(String level) {
      
-  String line[] = loadStrings(level);
+  String line[] = loadStrings("levels/level2.txt");
   
   for (int i = 0 ; i < line.length; i++) {
     
