@@ -10,6 +10,7 @@ class player {
   int size = 32;
   String moveDirection;
   PImage img; 
+  boolean onGoal = false;
   
   //Draw the players with their colors at their location
   void display() {
@@ -77,7 +78,7 @@ void playerMove(){
 
 //Draw both players in their respective locations
 void playerDraw() {
-  scale(5, 5);
+  //scale(5, 5);
   
   p1.display();
   p2.display();
