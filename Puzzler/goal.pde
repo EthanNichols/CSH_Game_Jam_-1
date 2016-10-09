@@ -43,7 +43,7 @@ class goal{
     }
     //checks if both players are on goals
     if(p1.onGoal && p2.onGoal){
-      println("YOU WON");
+      nextLevel();
     }
 
   }

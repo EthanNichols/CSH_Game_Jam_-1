@@ -1,11 +1,13 @@
 
+int levelNumber = 1;
+
 void levelManager() {
-  levelLoader();
+  levelLoader("levels/level1.txt");
 }
 
-void levelLoader() {
+void levelLoader(String level) {
      
-  String line[] = loadStrings("levels/level1.txt");
+  String line[] = loadStrings(level);
   
   for (int i = 0 ; i < line.length; i++) {
     
@@ -29,4 +31,9 @@ void levelLoader() {
        else if (tile == 'o') {setPlayerPosition(p, i, tile);}
     }
   }
+}
+
+void nextLevel() {
+  levelNumber++;
+  levelLoader("levels/level" + levelNumber + ".txt");
 }
