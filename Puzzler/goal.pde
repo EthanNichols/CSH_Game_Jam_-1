@@ -49,3 +49,14 @@ class goal{
   }
   
 }
+
+
+void setPosition(int Xgrid, int Ygrid, char colour) {
+  if (colour == 'o') {
+    goal1.Xgrid = Xgrid;
+    goal1.Ygrid = Ygrid;
+  } else if (colour == 'p') { 
+    goal2.Xgrid = Xgrid;
+    goal2.Ygrid = Ygrid;
+  }
+}
