@@ -41,9 +41,11 @@ void playerMove(){
   if (keyCode == UP) {
     p1.Ygrid -= 1;
     p1.moveDirection = "up";
+    teleporterCollision(1);
   } else if (keyCode == DOWN) {
     p1.Ygrid += 1;
     p1.moveDirection = "down";
+    teleporterCollision(1);
   }
   
   //Check for the Y movement of the player
@@ -51,9 +53,11 @@ void playerMove(){
   if (keyCode == LEFT) {
     p1.Xgrid -= 1;
     p1.moveDirection = "left";
+    teleporterCollision(1);
   } else if (keyCode == RIGHT) {
     p1.Xgrid += 1;
     p1.moveDirection = "right";
+    teleporterCollision(1);
   }
   
   //Check for the Y movement of the player
@@ -61,18 +65,22 @@ void playerMove(){
   if (key == 'w') {
     p2.Ygrid -= 1;
     p2.moveDirection = "up";
+    teleporterCollision(2);
   } else if (key == 's') {
     p2.Ygrid += 1;
     p2.moveDirection = "down";
+    teleporterCollision(2);
   }
   //Check for the X movement of the player
   //Move the second player
   if (key == 'a') {
     p2.Xgrid -= 1;
     p2.moveDirection = "left";
+    teleporterCollision(2);
   } else if (key == 'd') {
     p2.Xgrid += 1;
     p2.moveDirection = "right";
+    teleporterCollision(2);
   }
 }
 

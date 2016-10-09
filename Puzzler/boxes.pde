@@ -6,8 +6,8 @@ int boxIndex = 0;
 
 class boxes {
   int id = boxIndex;
-  int Xgrid = 3;
-  int Ygrid = 3;
+  int Xgrid = floor(random(width / 32));
+  int Ygrid = floor(random(height / 32));
   int size = 32;
   PImage img = loadImage("images/box.png");
   
