@@ -6,8 +6,8 @@ int boxIndex = 0;
 
 class boxes {
   int id = boxIndex;
-  int Xgrid = floor(random(width / 32));
-  int Ygrid = floor(random(height / 32));
+  int Xgrid;
+  int Ygrid;
   int size = 32;
   PImage img = loadImage("images/box.png");
   
@@ -17,13 +17,13 @@ class boxes {
   }
 }
 
-void createBoxes() {
-  //Create an amount of boxes
-  //Increase the index number for the amount of boxes created
-  for (int i = 0; i < 10; i++) {
-    box = (boxes[])append(box, new boxes());
-    boxIndex++;
-  }
+void createBoxes(int Xgrid, int Ygrid) {
+  box = (boxes[])append(box, new boxes());
+ 
+  box[boxIndex].Xgrid = Xgrid;
+  box[boxIndex].Ygrid = Ygrid;
+  
+  boxIndex++;
 }
 
 void boxCollision() {
