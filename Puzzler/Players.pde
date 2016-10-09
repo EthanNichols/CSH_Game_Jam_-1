@@ -34,6 +34,10 @@ void playerSetImg() {
   p2.img = loadImage("images/purpleCat.png");
 }
 
+void setPlayerPosition(int Xgrid, int Ygrid, char player) {
+   if (player == 'o') {p1.Xgrid = Xgrid; p1.Ygrid = Ygrid;}
+   else if (player == 'p') {p2.Xgrid = Xgrid; p2.Ygrid = Ygrid;}
+}
 
 void playerMove(){
   //Check for the Y movement of the player
