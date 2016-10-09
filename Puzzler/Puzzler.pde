@@ -6,6 +6,7 @@ void setup() {
  
   createPlayers();
   createBoxes();
+  createTeleporters();
 }
 
 void draw() {

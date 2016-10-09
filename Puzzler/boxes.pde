@@ -9,15 +9,17 @@ class boxes {
   int Xgrid = 3;
   int Ygrid = 3;
   int size = 32;
-  int pImg = color(200);
+  PImage img = loadImage("images/box.png");
   
   void display() {
-    fill(pImg);
-    rect(Xgrid * size, Ygrid * size, size, size);
+    //Draw the box in the location
+    image(img, Xgrid * size, Ygrid * size);
   }
 }
 
 void createBoxes() {
+  //Create an amount of boxes
+  //Increase the index number for the amount of boxes created
   for (int i = 0; i < 10; i++) {
     box = (boxes[])append(box, new boxes());
     boxIndex++;
@@ -25,7 +27,9 @@ void createBoxes() {
 }
 
 void boxCollision() {
-    
+  
+  //Local variable for the box number that is moved
+  //Local variable for the player that moves the box
   int boxMoved = -1;
   int player = 0;
   
@@ -78,15 +82,10 @@ void boxCollision2(int boxMoved, int player) {
   }
   
   if (!Checked) {
-    println("not a person");
     for (int i=0; i < boxIndex; i++) {
-      println("testing all boxes");
       if (boxMoved != i) {
-        println("different Boxes");
         if (box[boxMoved].Xgrid == box[i].Xgrid && box[boxMoved].Ygrid == box[i].Ygrid) {
-          println("Stacked Boxes");
           if (player == 1) {
-            println("Move Boxes");
             if (p1.moveDirection == "up") {box[boxMoved].Ygrid++; p1.Ygrid++;}
             else if (p1.moveDirection == "down") {box[boxMoved].Ygrid--; p1.Ygrid--;}
             else if (p1.moveDirection == "left") {box[boxMoved].Xgrid++; p1.Xgrid++;}
@@ -106,6 +105,7 @@ void boxCollision2(int boxMoved, int player) {
 }
 
 void boxesDraw() {
+  //Draw evey box in the array
   for (int i=0; i < boxIndex; i++) {
     box[i].display();
   }

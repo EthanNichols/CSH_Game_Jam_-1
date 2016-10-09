@@ -9,12 +9,11 @@ class player {
   int Ygrid = 0;
   int size = 32;
   String moveDirection;
-  int pImg; 
+  PImage img; 
   
   //Draw the players with their colors at their location
   void display() {
-    fill(pImg);
-    rect(Xgrid * size, Ygrid * size, size, size); 
+    image(img, Xgrid * size, Ygrid * size); 
   }
 }
 
@@ -30,8 +29,8 @@ void createPlayers() {
 
 //Set the images for both players
 void playerSetImg() {
-  p1.pImg = color(200, 100, 50);
-  p2.pImg = color(100, 50, 200);
+  p1.img = loadImage("images/orangeCat.png");
+  p2.img = loadImage("images/purpleCat.png");
 }
 
 
@@ -78,6 +77,8 @@ void playerMove(){
 
 //Draw both players in their respective locations
 void playerDraw() {
+  scale(5, 5);
+  
   p1.display();
   p2.display();
 }
