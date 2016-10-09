@@ -1,0 +1,20 @@
+//Tile Commands
+0 - Blank Area
+1 - Tile
+
+//Special Tile Commands
+2 - Box
+y - Teleporter 1 --> 2
+Y - Teleporter 2 --> 1
+h - Teleporter 3 --> 4
+H - Teleporter 4 --> 3
+n - Teleporter 5 --> 6
+N - Teleporter 6 --> 5
+
+//Player Commands
+p - Purple Player
+o - Orange Player
+
+//Goal Commands
+G - Purple Goal
+g - Orange Goal
