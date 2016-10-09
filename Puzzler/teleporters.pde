@@ -3,8 +3,8 @@ int teleporterIndex = 0;
 
 class teleporters {
   int id = teleporterIndex;
-  int Xgrid = floor(random(width / 32));
-  int Ygrid = floor(random(height / 32));
+  int Xgrid;
+  int Ygrid;
   int size = 32;
   int destination;
   PImage img = loadImage("images/teleporter.png");

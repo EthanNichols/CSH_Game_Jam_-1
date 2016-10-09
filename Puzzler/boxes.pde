@@ -104,6 +104,12 @@ void boxCollision2(int boxMoved, int player) {
   }
 }
 
+void resetBoxes() {
+  for (int i=0; i < boxIndex; i++) {
+    box[i].Xgrid = -10; 
+  }
+}
+
 void boxesDraw() {
   //Draw evey box in the array
   for (int i=0; i < boxIndex; i++) {
