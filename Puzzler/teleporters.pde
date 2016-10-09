@@ -37,6 +37,10 @@ void setDestination() {
     else if (teleporter[i].id == 5) {teleporter[i].destination = 4;}
 }
 
+void setTelePosition(int Xgrid, int Ygrid, int teleNum) {
+  teleporter[teleNum].Xgrid = Xgrid; teleporter[teleNum].Ygrid = Ygrid;
+}
+
 void teleporterCollision(int player) {
   
   int teleporterOn = -1;
